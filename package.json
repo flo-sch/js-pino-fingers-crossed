@@ -1,0 +1,54 @@
+{
+	"name": "@macfja/pino-fingers-crossed",
+	"version": "1.0.0",
+	"description": "A pino transport hold log until a log level is reach",
+	"main": "src/index.js",
+	"module": "src/index.js",
+	"types": "src/index.d.ts",
+	"exports": {
+		".": {
+			"types": ["./src/index.d.ts"],
+			"import": ["./src/index.js"]
+		},
+		"./package.json": ["./package.json"]
+	},
+	"files": ["src/", "LICENSE.md", "README.md", "CHANGELOG.md"],
+	"scripts": {
+		"lint": "tsc --noEmit && biome check .",
+		"test": "ava src/index.spec.js",
+		"fix": "biome check --write .",
+		"types": "tsc --emitDeclarationOnly",
+		"prepublishOnly": "tsc --emitDeclarationOnly"
+	},
+	"bugs": {
+		"url": "https://github.com/MacFJA/js-pino-fingers-crossed/issues"
+	},
+	"homepage": "https://github.com/MacFJA/js-pino-fingers-crossed",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/MacFJA/js-pino-fingers-crossed.git"
+	},
+	"type": "module",
+	"keywords": [
+		"pino",
+		"transport",
+		"pino-transport",
+		"logger",
+		"fingers-crossed"
+	],
+	"author": "MacFJA",
+	"license": "MIT",
+	"devDependencies": {
+		"@biomejs/biome": "1.8.3",
+		"@types/node": "^20.0.0",
+		"ava": "^6.1.3",
+		"sinon": "^18.0.0",
+		"typescript": "^5.5.3"
+	},
+	"peerDependencies": {
+		"pino": "^9.0.0"
+	},
+	"dependencies": {
+		"pino": "^9.0.0"
+	}
+}
