@@ -1,7 +1,7 @@
 import test from "ava";
 import pino from "pino";
 import sinon from "sinon";
-import fingersCrossed, { enable } from "./index.js";
+import fingersCrossed, { enable } from "./index.mjs";
 
 function createLogger(bindings = {}) {
 	const fakeStream = {

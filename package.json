@@ -1,14 +1,17 @@
 {
 	"name": "@macfja/pino-fingers-crossed",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"description": "A pino transport hold log until a log level is reach",
-	"main": "src/index.js",
-	"module": "src/index.js",
-	"types": "src/index.d.ts",
+	"main": "src/index.cjs",
+	"module": "src/index.mjs",
+	"types": "src/index.d.mts",
 	"exports": {
 		".": {
-			"types": ["./src/index.d.ts"],
-			"import": ["./src/index.js"]
+			"types": ["./src/index.d.mts"],
+			"import": ["./src/index.mjs"],
+			"require": ["./src/index.cjs"],
+			"node": ["./src/index.cjs"],
+			"default": ["./src/index.cjs"]
 		},
 		"./package.json": ["./package.json"]
 	},
@@ -18,7 +21,8 @@
 		"test": "ava src/index.spec.js",
 		"fix": "biome check --write .",
 		"types": "tsc --emitDeclarationOnly",
-		"prepublishOnly": "tsc --emitDeclarationOnly"
+		"cjs": "rollup src/index.mjs --format=cjs --file=src/index.cjs --external=pino --exports=named --no-esModule",
+		"prepublishOnly": "npm run cjs && tsc --emitDeclarationOnly"
 	},
 	"bugs": {
 		"url": "https://github.com/MacFJA/js-pino-fingers-crossed/issues"
@@ -42,6 +46,7 @@
 		"@biomejs/biome": "1.8.3",
 		"@types/node": "^20.0.0",
 		"ava": "^6.1.3",
+		"rollup": "^4.22.2",
 		"sinon": "^18.0.0",
 		"typescript": "^5.5.3"
 	},
